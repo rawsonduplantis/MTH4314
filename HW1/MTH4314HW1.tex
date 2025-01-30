@@ -39,6 +39,7 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 \newtheorem*{sol}{Solution}
 \newtheorem*{claim}{Claim}
+\newtheorem*{prop}{Proposition}
 \newtheorem{problem}{Problem}
 \theoremstyle{remark}  % Style for remarks
 \newtheorem*{remark}{Remark}
@@ -62,14 +63,31 @@ citecolor=blue, urlcolor=blue]{hyperref}
             \item $a=54$, $b=7$.
         \end{enumerate}
     \end{problem}
+    Starting with the first subproblem, we can start by finding the maximal $q$ in the set of possible divisors $S$. By examination we can quickly deduce $$\boxed{20 = 3(6) + 2, 0 \leq 2 < 3.}$$ We can do the same for the second subproblem: $$\boxed{54 = 7(7) + 5, 0 \leq 5 < 7.}$$
 %\end{problemgroup}
 \vspace{.5em}
-
 \setcounter{problem}{7}
 %\begin{problemgroup}
     \begin{problem}
         Show that when the square of an odd integer is divided by 8, the remainder is 1. (Hint: remember $2|n(n+1)$.)
     \end{problem}
+    We will restate the problem as a proposition and prove it using the Division Algorithm.
+    \begin{prop}
+        Given the square of an odd integer, it's remainder is always 1 when divided by 8.
+    \end{prop}
+    \begin{proof}
+        We start with a simple expression of any odd integer, $2n+1$. We can restate our proposition as $\exists q \in \mathbb{Z}_{\geq 0}$ such that $(2n+1)^2=8q+1 \ \forall n\in\mathbb{Z}_{\geq 0}$. We can rearrange the statement to determine whether $q$ is an integer:
+        \begin{align*}
+            (2n+1)^2 &= 8q+1 \\
+            4n^2+4n+1 &= 8q+1 \\
+            4n(n+1) &= 8q \\
+            \frac{1}{2}n(n+1) &= q
+        \end{align*}
+        Because $n(n+1)$ is even (or 0) we now know that $\forall n\in \mathbb{Z}_{\geq0} \implies \exists q\in \mathbb{Z}_{\geq0}$ given a remainder of 1. This is important as it ensures our divisor is an integer. Thus $(2n+1)^2/8$ will yield a remainder of 1 $\forall n\in \mathbb{Z}_{\geq0}$.
+    \end{proof}
+    \begin{remark}
+        Is this too discursive? There is probably a more elegant solution.
+    \end{remark}
 %\end{problemgroup}
 \vspace{.5em}
 
