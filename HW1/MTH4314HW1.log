@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  3 FEB 2025 13:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  3 FEB 2025 14:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -837,11 +837,11 @@ Package hyperref Info: Link coloring ON on input line 48.
 \@outlinefile=\write4
 \openout4 = `MTH4314HW1.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -873,7 +873,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3] (./MTH4314HW1.aux)
+[3]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4] (./MTH4314HW1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
@@ -882,18 +891,18 @@ Package rerunfilecheck Info: File `MTH4314HW1.out' has not changed.
 (rerunfilecheck)             Checksum: A6A25CB9FBB47B348E2FDABF58116213;219.
  ) 
 Here is how much of TeX's memory you used:
- 35553 strings out of 474321
- 825717 string characters out of 5740886
- 1345096 words of memory out of 5000000
+ 35554 strings out of 474321
+ 825723 string characters out of 5740886
+ 1342096 words of memory out of 5000000
  58046 multiletter control sequences out of 15000+600000
  564742 words of font info for 58 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 110i,12n,107p,855b,724s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,11n,107p,823b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on MTH4314HW1.pdf (3 pages, 123915 bytes).
+Output written on MTH4314HW1.pdf (4 pages, 125862 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
+ 108 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
  29 words of extra memory for PDF output out of 10000 (max. 10000000)
 

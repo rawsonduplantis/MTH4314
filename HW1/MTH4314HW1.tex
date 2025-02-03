@@ -52,6 +52,7 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \lhead{Rawson Duplantis}
 \chead{MTH 4314: Abstract Algebra}
 \rhead{\today}
+Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ to recognize they are multi-parted.
 \section{Division Algorithm}
 
 \setcounter{problem}{4}
@@ -163,7 +164,7 @@ citecolor=blue, urlcolor=blue]{hyperref}
             a &= z(nq+m) \\
             a &= zl
         \end{align*}
-        knowing $l=(nq+m)$. \underline{Thus $z|a$ using the multiple $l\in\mathbb{Z}$}.
+        knowing $l=(nq+m)$. \underline{Thus $z|a$ using the multiple $l\in\mathbb{Z}$}. Given that $a,b|r$ and $r,b|a$ we know that the set of common divisors between $a,b$ and $r,b$ are the same and hence their maxes are the same. Thus $\gcd(a,b)=\gcd(r,b)$.
     \end{proof}
 %\end{problemgroup}
 \vspace{.5em}
@@ -177,6 +178,12 @@ citecolor=blue, urlcolor=blue]{hyperref}
             \item \dots
         \end{enumerate}
     \end{problem}
+    We know via Theorem 1.10 from the text that the greatest common divisor of two integers is their minimal linear combination, i.e. $\gcd(a,b)=d\iff d=\min(\{d|ax+by=d, x,y\in\mathbb{Z}\})$. We can then write
+    \begin{align*}
+        ax+by &= d \\
+        \frac{a}{d}x+\frac{b}{d}y &= 1.
+    \end{align*}
+    Because 1 is the smallest outcome of any linear combination assuming $a,b$ are not both zero, we can say that $\frac{a}{d}$ and $\frac{b}{d}$ have a greatest common divisor of 1 and are thus relatively prime. This result is intuitive as the greatest common divisor is 'divided' out of each number, leaving them relatively prime.
 %\end{problemgroup}
 
 
