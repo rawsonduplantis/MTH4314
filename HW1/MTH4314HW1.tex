@@ -96,6 +96,18 @@ citecolor=blue, urlcolor=blue]{hyperref}
     \begin{problem}
         Let $n,m\in \mathbb{N}$ with $m\neq 1$. Show $n$ can be uniquely written in the form $n=\sum_{k=0}^{N}a_km^k$ for some $N\in\mathbb{Z}_{\geq 0}$ and $a_k\in\{0,1,\dots,(m-1)\}$ with $a_N\neq0$. Hint: Use induction on $n$ and begin by choosing the largest $N\in \mathbb{Z}_{\geq 0}$ so that $m^N\leq n$. Use the Division Algorithm to write $n=a_Nm^N+r$ and then apply the inductive hypothesis to $r$.
     \end{problem}
+    \begin{prop}
+        Given two positive integers m, n where $m\neq 1$, there is a unique representation of $n=\sum_{k=0}^{N}a_km^k$ for some $N\in \mathbb{Z}_{\geq 0}$ while $a_k\in \{0,1,\dots,m-1\}$ and $a_N\neq 0$.
+    \end{prop}
+    \begin{proof}
+        Suppose $m,n \in\mathbb{N}$ and $m\geq 2$. We'll first show that the representation exists. Starting with the base case of $n=0$, the representation $0=n=\sum_{k=0}^{N}=a_km^k=a_0m^0=a_0$ which is true as $a_0\in\{0,\dots,m-1\}$ and $N=0$. Next with the inductive step, we choose an $N$ such that $m^N\leq n \leq m^{N+1}$. Using the Division Algorithm's expression of $n=a_Nm^N+r$, we know that $r$ is a recursive iteration of this expression and can thus be expressed as $r=\sum_{k=0}^{N-1}a_Nm^N$. Combining our base case and $r$, we see that $$n=a_Nm^N+\sum_{k=0}^{N-1}a_Nm^N\implies n=\sum_{k=0}^{N}a_Nm^N.$$ Next, to prove this representation is unique, consider two expressions of $n$ that are supposedly equal in the non-unique case:
+        \begin{align*}
+            \sum_{k=0}^{N}a_km^k &= \sum_{k=0}^{M}b_km^k \\
+            \sum_{k=0}^{N}a_km^k-\sum_{k=0}^{M}b_km^k &=0 \\
+            \sum_{k=0}^{\max(M,N)}(a_k-b_k)m^k &= 0.
+        \end{align*}
+        The third line of the above derivation can only be true if $(a_k-b_k)=0\implies a_k=b_k$. Thus the representation is unique.
+    \end{proof}
 %\end{problemgroup}
 \vspace{.5em}
 
@@ -110,30 +122,49 @@ citecolor=blue, urlcolor=blue]{hyperref}
             \item \dots
         \end{enumerate}
     \end{problem}
+    The divisors of 52 are $\pm\{1,2,4,13,26,52\}$.
 %\end{problemgroup}
 \vspace{.5em}
 
 \setcounter{problem}{13}
 %\begin{problemgroup}
-\begin{problem}
-    Evaluate the following:
-    \begin{enumerate}[label=(\alph*)]
-        \item (42,56),
-        \item \dots
-    \end{enumerate}
-\end{problem}
+    \begin{problem}
+        Evaluate the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item (42,56),
+            \item \dots
+        \end{enumerate}
+    \end{problem}
+    The expression $(42,56)$, otherwise written as $\gcd(42,56)$, is equivalent to $\max(A\cap B)$ where $A=\{1,2,3,6,7,14,21,42\}$, the divisors of 42, and $B=\{1,2,4,7,8,14,28,56\}$, the divisors of 56. Thus the greatest common divisor of these two numbers is 14.
 %\end{problemgroup}
 \vspace{.5em}
 
 \setcounter{problem}{16}
 %\begin{problemgroup}
-\begin{problem}
-    Let $b,q,r\in \mathbb{Z}$ and let $a=bq+r$ with $a$ and $b$ not both $0$.
-    \begin{enumerate}[label=(\alph*)]
-        \item Show a common divisor of $a$ and $b$ is a divisor of $r$ and that a common divisor of $b$ and $r$ is a divisor of $a$.
-        \item Conclude that $(a,b)=(r,b)$
-    \end{enumerate}
-\end{problem}
+    \begin{problem}
+        Let $b,q,r\in \mathbb{Z}$ and let $a=bq+r$ with $a$ and $b$ not both $0$.
+        \begin{enumerate}[label=(\alph*)]
+            \item Show a common divisor of $a$ and $b$ is a divisor of $r$ and that a common divisor of $b$ and $r$ is a divisor of $a$.
+            \item Conclude that $(a,b)=(r,b)$
+        \end{enumerate}
+    \end{problem}
+    \begin{prop}
+        A common divisor of $a,b\in\mathbb{Z}$ divides $r\ \land$ a common divisor of $b,r\in\mathbb{Z}$ divides $a\implies(a,b)=(r,b)$ given $a=br+r$, $a,b\neq0$.
+    \end{prop}
+    \begin{proof}
+        Suppose $b,q,r\in\mathbb{Z}$ such that $a=bq+r$ and that $a,b$ have a common divisor $y$. The given equation can be rewritten as $iy=jyq+r$ where $iy=a$ and $jy=b$. We can rearrange this equation to isolate $r$: \begin{align*}
+            r &= iy-jyq \\
+            r &= y(i-jq) \\
+            r &= yk
+        \end{align*}
+        knowing $k=(i-jq)$. \underline{We can then say that $y|r$ using the multiple $k\in\mathbb{Z}$.} Similarly let us suppose $b,r$ have a common divisor $z$; they can be rewritten as $r=mz$ and $b=nz$. Using our given expression, we can say
+        \begin{align*}
+            a &= nzq + mz \\
+            a &= z(nq+m) \\
+            a &= zl
+        \end{align*}
+        knowing $l=(nq+m)$. \underline{Thus $z|a$ using the multiple $l\in\mathbb{Z}$}.
+    \end{proof}
 %\end{problemgroup}
 \vspace{.5em}
 
