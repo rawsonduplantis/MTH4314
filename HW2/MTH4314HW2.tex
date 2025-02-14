@@ -1,4 +1,4 @@
-% !TEX root = MTH4314HW1.tex
+% !TEX root = MTH4314HW2.tex
 \documentclass[12pt]{article}
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,scrextend}
@@ -42,12 +42,12 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \newtheorem*{claim}{Claim}
 \newtheorem*{prop}{Proposition}
 \newtheorem{problem}{Problem}
+\numberwithin{problem}{section} % Reset problem counter in each section
 \theoremstyle{remark}  % Style for remarks
 \newtheorem*{remark}{Remark}
 \newenvironment{answer}
     {\begin{adjustwidth}{0pt}{0pt}}
     {\end{adjustwidth}}
-
 
 \begin{document}
  
@@ -57,145 +57,243 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \chead{MTH 4314: Abstract Algebra}
 \rhead{\today}
 Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ to recognize they are multi-parted.
+
 \section{Arithmetic}
-\setcounter{subsection}{2}
-\subsection{Division Algorithm}
+\subsection{Integers}
+\setcounter{subsubsection}{4}
+\subsubsection{Fundamental Theorem of Arithmetic}
 
-\setcounter{problem}{4}
+%\begin{problemgroup}
+\setcounter{problem}{23}
+    \begin{problem}
+        Let $a,m,n\in\mathbb{Z}$ with $(m,n)=1$. Show $(a,mn)=(a,m)(a,n)$. Hint: Use Theorem 1.8 and recall that $m$ and $n$ have no common divisors.
+    \end{problem}
+    \begin{answer}
+        \begin{proof}
+            Suppose we have $a,m,n\in\mathbb{Z}$ such that $(m,n)=1$, $(a,m)$, and $(a,n)$. We can then express using Theorem 1.8 these greatest common divisors in their prime factorizations $$(a,m)=\prod_{i=0}^{M}p_i^{min\{a_i,m_i\}}\text{ and }(a,n)=\prod_{j=0}^{N}p_j^{min\{a_j,n_j\}}.$$ Since $(m,n)=1$, we know that their prime factorizations are unique from one another and that they each will contribute separate primes to $m\times n$ yielding $$(a,mn)=\prod_{i=0}^{M}p_i^{min\{a_i,m_i\}}\times\prod_{j=0}^{N}p_j^{min\{a_j,n_j\}}.$$ This cleanly becomes $(a,mn)=(a,m)(a,n)$ when the prime factorizations are re-expressed in $\gcd$ form.
+        \end{proof}
+    \end{answer}
+%\end{problemgroup}
+\vspace{5pt}
 %\begin{problemgroup}
     \begin{problem}
-        Use old-fashioned long division to implement the Division Algorithm and write $a=bq+r$, $0\leq r<b$, for each $a$ and $b$ listed below:
+        Let $p$ be a positive prime.
         \begin{enumerate}[label=(\alph*)]
-            \item $a=20$, $b=3$.
-            \item $a=54$, $b=7$.
+            \item If $p\mid a^n$ for $a\in\mathbb{Z}$ and $n\in\mathbb{N}$, then $p^n\mid a^n$. Hint: Show $p\mid a$ first.
+            \item Show there are no $a,b\in\mathbb{Z}^{\times}$ satisfying $a^2=pb^2$. Hint: If you could solve $a^2=pb^2$, show you may also assume $(a,b)=1$ by dividing. Then show $p\mid a$ and then that $p\mid b$ to get a contradiction. Alternative Hint: For (b) compare the exponents of $p$ on the LHS and the RHS of the equation $a^2=pb^2$.
+            \item Show there is no $r\in\mathbb{Q}$ satisfying $r^2=p$; i.e., show $\sqrt{p}\notin\mathbb{Q}$.
         \end{enumerate}
     \end{problem}
     \begin{answer}
-    Starting with the first subproblem, we can start by finding the maximal $q$ in the set of possible divisors $S$. By examination we can quickly deduce $$\boxed{20 = 3(6) + 2, 0 \leq 2 < 3.}$$ We can do the same for the second subproblem: $$\boxed{54 = 7(7) + 5, 0 \leq 5 < 7.}$$
+        The problem will be broken into three separate proofs for each subproblem.
+        \begin{proof}
+            Suppose $p\mid a^n$ for some $a\in\mathbb{Z}, n \in \mathbb{Z}_{>0}$ given positive prime $p$. We know that the sequence of $a$'s must contain a factor of $p$ according to our supposition, which is only possible if $p=a$ or $p\mid a$. Because $p=a\Rightarrow p\mid a$, we can say across all valid cases that $p\mid a^n \Rightarrow p\mid a$. From this we can say
+            \begin{align*}
+                p|a &\Rightarrow pk=a \exists k \in \mathbb{Z} \\
+                &\Rightarrow (pk)^n = a^n \\
+                &\Rightarrow p^nk^n = a^n \\
+                &\Rightarrow p^nl = a^n,\ l=k^n\in \mathbb{Z}
+            \end{align*}
+            Therefore $p^n$ divides $a^n$.
+        \end{proof}
+        \begin{proof}
+            Suppose, along with the original suppositions above, that $a^2=pb^2$ for some $a,b\in \mathbb{Z}^{\times}$. We can then quickly say that $\frac{a^2}{b^2}=p$. Starting with the first requirement of $p$, we know that $\frac{a^2}{b^2}$ must be an integer yielding three valid possibilities:
+            \begin{enumerate}[label=(\roman*)]
+                \item $a^2=b^2$ would always result in the integer one;
+                \item $a^2>b^2,\ b=1$ will always result in the integer $a^2$, and;
+                \item $a^2>b^2,\ b>1, (a,b)>1$, i.e. the fraction will only result in an integer when the numerator and the denominator share a common factor.
+            \end{enumerate}
+            All of these possibilities, however, do not result in a positive prime $p$. The first option is invalid as all primes are greater than 1. The second option is invalid as $\frac{a^2}{b^2}=(a,b)^2$ guarantees the fraction will yield a composite number (the square of their greatest common divisor). Finally, the third option is invalid for the same reason as two, albeit more obviously: $a^2$ can never be prime. Therefore $a^2\neq pb^2 \ \forall a,b\in\mathbb{Z}^\times$.
+        \end{proof}
+        \begin{proof}
+            Suppose $\exists r\in \mathbb{Q}$ such that $r^2=p \Leftrightarrow \sqrt{p}\in \mathbb{Q}$. Because $r\in\mathbb{Q}$, we can say $\exists a,b\in\mathbb{Z}^\times$ such that $\frac{a}{b}=r \Rightarrow \frac{a^2}{b^2}=r^2=p$. However, we know from the previous proof that this latter equation can never be true. Therefore $\sqrt{p}\notin\mathbb{Q}$.
+        \end{proof}
     \end{answer}
 %\end{problemgroup}
-\vspace{.5em}
-\setcounter{problem}{7}
+
+\subsection{Modular Arithmetic}
+\subsubsection{Congruence}
+
 %\begin{problemgroup}
+    \setcounter{problem}{28}
     \begin{problem}
-        Show that when the square of an odd integer is divided by 8, the remainder is 1. (Hint: remember $2|n(n+1)$.)
+        Which of the following statements are true?
+        \begin{multicols}{3}  
+            \begin{enumerate}[label=(\alph*)]
+                \item $6 \stackrel{?}{\equiv} 42 \pmod{2}$
+                \item $6 \stackrel{?}{\equiv} 43 \pmod{2}$
+                \item $7 \stackrel{?}{\equiv} 108 \pmod{10}$
+                \item $7 \stackrel{?}{\equiv} 117 \pmod{10}$
+                \item $2 \stackrel{?}{\equiv} 54 \pmod{3}$
+                \item $2 \stackrel{?}{\equiv} 56 \pmod{3}$
+            \end{enumerate}
+        \end{multicols}
     \end{problem}
     \begin{answer}
-    We will restate the problem as a proposition and prove it using the Division Algorithm.
-    \begin{prop}
-        Given the square of an odd integer, it's remainder is always 1 when divided by 8.
-    \end{prop}
-    \begin{proof}
-        We start with a simple expression of any odd integer, $2n+1$. We can restate our proposition as $\exists q \in \mathbb{Z}_{\geq 0}$ such that $(2n+1)^2=8q+1 \ \forall n\in\mathbb{Z}_{\geq 0}$. We can rearrange the statement to determine whether $q$ is an integer:
-        \begin{align*}
-            (2n+1)^2 &= 8q+1 \\
-            4n^2+4n+1 &= 8q+1 \\
-            4n(n+1) &= 8q \\
-            \frac{1}{2}n(n+1) &= q
-        \end{align*}
-        Because $n(n+1)$ is even (or 0) we now know that $\forall n\in \mathbb{Z}_{\geq0} \implies \exists q\in \mathbb{Z}_{\geq0}$ given a remainder of 1. This is important as it ensures our divisor is an integer. Thus $(2n+1)^2/8$ will yield a remainder of 1 $\forall n\in \mathbb{Z}_{\geq0}$.
-    \end{proof}
-    \begin{remark}
-        Is this too discursive? There is probably a more elegant solution.
-    \end{remark}
+        Statement (a) is true as $2\mid (42-6) \Rightarrow 2\mid 36$ thus both are congruent to $[0] \pmod{2}$. Statement (b) is false as $[6]\equiv[0]\not\equiv[1]\equiv[43]\pmod{2}$. Statement (c) is also false as $[7]\not\equiv [8]\equiv [108] \pmod{10}$. Statement (d) however is true as $10 \mid (117-7) \Rightarrow 10 \mid 110$ thus both are congruent to $[7]\pmod {10}$. Statement (e) is false as $[2]\not\equiv [0]\equiv[54] \pmod{3}$. Finally, Statement (f) is true as $3\mid(56-2)\Rightarrow 3\mid 54$ thus both are congruent to $[2]\pmod{3}$. \par To summarize:
+        \begin{multicols}{3}
+            \begin{enumerate}[label=(\alph*)]
+                \item $6 \equiv 42 \pmod{2}$
+                \item $6 \not\equiv 43 \pmod{2}$
+                \item $7 \not\equiv 108 \pmod{10}$
+                \item $7 \equiv 117 \pmod{10}$
+                \item $2 \not\equiv 54 \pmod{3}$
+                \item $2 \equiv 56 \pmod{3}$
+            \end{enumerate}
+        \end{multicols}
     \end{answer}
 %\end{problemgroup}
-\vspace{.5em}
+\vspace{5pt}
+%\begin{problemgroup}
+    \setcounter{problem}{31}
+    \begin{problem}
+        Complete the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item If $x \equiv 2 \pmod{5}$, what is $3x^4+x^3+2x-6$ congruent to modulo 5?
+            \item If $x \equiv 3 \pmod{6}$, what is $2x^{47891}+5x^3+2x+1$ congruent to modulo 6?
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        Please refer to the answers of Problem 43, as they are the same problem phrased differently.
+    \end{answer}
+%\end{problemgroup}
+\vspace{5pt}
+%\begin{problemgroup}
+    \setcounter{problem}{33}
+    \begin{problem}
+        Find an example of the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item $ab \equiv 0 \pmod{n}$ but $a,b \not\equiv 0$.
+            \item $ab \equiv ac \pmod{n}$ with $a \not\equiv 0$  and $b \not\equiv c$.
+            \item $a^2 \equiv b^2 \pmod{n}$ but $a \not\equiv\pm b$. Hint: Look in a nonprime modulus.
+        \end{enumerate}
+    \end{problem}
+%\end{problemgroup}
+\vspace{5pt}
+%\begin{problemgroup}
+    \setcounter{problem}{35}
+    \begin{problem}
+        Recall that our decimal system is a base 10 system. For example, this means that 5672 is the decimal representation of $5 \cdot 10^3 + 6 \cdot 10^2 + 7 \cdot 10^1 + 2 \cdot 10^0$. The numbers 5, 6, 7, 2 are called the \emph{digits} of the number. In general, let $n\in \mathbb{Z}_{\geq 0}$ and write its decimal representation as $a_N \dots a_2a_1a_0$ so that $n = \sum_{k=0}^{N}a_k 10^k$. Use modular arithmetic to verify the following rules.
+        \begin{enumerate}[label=(\alph*)]
+            \item For $k\in\mathbb{N}$, show $k \mid n \Leftrightarrow n\equiv 0 \pmod{k}$.
+            \item Show $2 \mid n \Leftrightarrow 2$ divides the last digit of $n$, i.e., if and only $a_0$ is even.
+            \item Show $3 \mid n \Leftrightarrow 3$ divides the sum of the digits of $n$, i.e., if and only if $3 \mid \sum_{k=0}^{N}a_k$. Hint: Notice $10\equiv1\pmod{3}$.
+            \item If $n$ has a decimal representation of $a_4a_3a_2a_1a_0$, show $7 \mid n \Leftrightarrow 7 \mid (-3a_4 - a_3 + 2a_2 + 3a_1 +a_0)$. Describe the general pattern.
+        \end{enumerate}
+    \end{problem}
+%\end{problemgroup}
 
-\setcounter{problem}{9}
+\subsubsection{Congruence Classes}
+
+%\begin{problemgroup}
+    \setcounter{problem}{38}
+    \begin{problem}
+        Complete the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item In $\mathbb{Z}_5$, which sets are the same as $[2]$:
+            \begin{enumerate}[label=(\roman*)]
+                \item $\{12+5k \mid k \in \mathbb{Z}\}$
+                \item $\{14+5k \mid k \in \mathbb{Z}\}$
+                \item $\{27-5k \mid k \in \mathbb{Z}\}$
+            \end{enumerate}
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        The first and third sets are congruent to $[2]$ as $5|(12-2) \Rightarrow 5\mid 10$ and $5|(27-2) \Rightarrow 5\mid 25$. The second set is not congruent to $[2]$ as $5 \nmid (14-2) \Rightarrow 5 \nmid 12$.
+    \end{answer}
+%\end{problemgroup}
+\vspace{5pt}
+%\begin{problemgroup}
+    \setcounter{problem}{40}
+    \begin{problem}
+        Let $m,n\in\mathbb{N}$. Attempt to define a map $f\operatorname{:}\mathbb{Z}_m \mapsto \mathbb{Z}_n$ by setting $f([a]_m)=[a]_n$ for $[a]_m \in \mathbb{Z}_m$.
+        \begin{enumerate}
+            \item Show this supposed function may not be well defined by finding an example in which $[a]_n \neq [a+m]_n$.
+            \item Show $f$ is a well defined function if and only if $n \mid m$. Hint: Show $f$ is well defined if and only if, for each $k \in \mathbb{Z}$ (especially $k=1$), $a+km=a+jn$ for some $j\in \mathbb{Z}$.
+        \end{enumerate}
+    \end{problem}
+%\end{problemgroup}
+
+\subsubsection{Arithmetic}
+
 %\begin{problemgroup}
     \begin{problem}
-        Let $n,m\in \mathbb{N}$ with $m\neq 1$. Show $n$ can be uniquely written in the form $n=\sum_{k=0}^{N}a_km^k$ for some $N\in\mathbb{Z}_{\geq 0}$ and $a_k\in\{0,1,\dots,(m-1)\}$ with $a_N\neq0$. Hint: Use induction on $n$ and begin by choosing the largest $N\in \mathbb{Z}_{\geq 0}$ so that $m^N\leq n$. Use the Division Algorithm to write $n=a_Nm^N+r$ and then apply the inductive hypothesis to $r$.
+        Write out the entire addition and multiplication tables for:
+        \begin{enumerate}[label=(\alph*)]
+            \item $\mathbb{Z}_4$,
+            \item \dots
+        \end{enumerate}
     \end{problem}
-    \begin{prop}
-        Given two positive integers m, n where $m\neq 1$, there is a unique representation of $n=\sum_{k=0}^{N}a_km^k$ for some $N\in \mathbb{Z}_{\geq 0}$ while $a_k\in \{0,1,\dots,m-1\}$ and $a_N\neq 0$.
-    \end{prop}
-    \begin{proof}
-        Suppose $m,n \in\mathbb{N}$ and $m\geq 2$. We'll first show that the representation exists. Starting with the base case of $n=0$, the representation $0=n=\sum_{k=0}^{N}=a_km^k=a_0m^0=a_0$ which is true as $a_0\in\{0,\dots,m-1\}$ and $N=0$. Next with the inductive step, we choose an $N$ such that $m^N\leq n \leq m^{N+1}$. Using the Division Algorithm's expression of $n=a_Nm^N+r$, we know that $r$ is a recursive iteration of this expression and can thus be expressed as $r=\sum_{k=0}^{N-1}a_Nm^N$. Combining our base case and $r$, we see that $$n=a_Nm^N+\sum_{k=0}^{N-1}a_Nm^N\implies n=\sum_{k=0}^{N}a_Nm^N.$$ Next, to prove this representation is unique, consider two expressions of $n$ that are supposedly equal in the non-unique case:
+    \begin{answer}
+        % Z4
+        The following are the addition and multiplication tables ($\mathbb{Z}_4, +)$ and $(\mathbb{Z}_4, \cdot)$, respectively. \\
+        \begin{center}
+            \begin{tabular}{c|cccc}
+                $+$ & 0 & 1 & 2 & 3 \\
+                \hline
+                0 & 0 & 1 & 2 & 3 \\
+                1 & 1 & 2 & 3 & 0 \\
+                2 & 2 & 3 & 0 & 1 \\ 
+                3 & 3 & 0 & 1 & 2
+            \end{tabular}
+            \hspace{5pt}
+            \begin{tabular}{c|cccc}
+                $\cdot$ & 0 & 1 & 2 & 3 \\
+                \hline
+                0 & 0 & 0 & 0 & 0 \\
+                1 & 0 & 1 & 2 & 3 \\
+                2 & 0 & 2 & 0 & 2 \\ 
+                3 & 0 & 3 & 2 & 1
+            \end{tabular}
+        \end{center}
+    \end{answer}
+%\end{problemgroup}
+\vspace{5pt}
+%\begin{problemgroup}
+    \begin{problem}
+        Complete the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item If $x=[2]\in \mathbb{Z}_5$, simplify $[3]x^4+x^3+[2]x-[6]$.
+            \item If $x=[3]\in\mathbb{Z}_6$, simplify $[2]x^{47,891} + [5]x^3 + [2]x + [1]$.
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        For subproblem (a), we can calculate the expression as
         \begin{align*}
-            \sum_{k=0}^{N}a_km^k &= \sum_{k=0}^{M}b_km^k \\
-            \sum_{k=0}^{N}a_km^k-\sum_{k=0}^{M}b_km^k &=0 \\
-            \sum_{k=0}^{\max(M,N)}(a_k-b_k)m^k &= 0.
+            [3]x^4+x^3+[2]x-[6] &= [3][2]^4 + [2]^3 + [2][2]-[6] \\
+            &= [3\cdot 2^4] + [2^3] + [2\cdot 2] - [6] \\
+            &= [48 + 8 + 4 - 6] \\
+            &= \boxed{[58] = [3] \pmod{5}}.
         \end{align*}
-        The third line of the above derivation can only be true if $(a_k-b_k)=0\implies a_k=b_k$. Thus the representation is unique.
-    \end{proof}
-%\end{problemgroup}
-\vspace{.5em}
-
-\subsection{Divisors}
-
-\setcounter{problem}{11}
-%\begin{problemgroup}
-    \begin{problem}
-        List all of the divisors of the following:
-        \begin{enumerate}[label=(\alph*)]
-            \item 52,
-            \item \dots
-        \end{enumerate}
-    \end{problem}
-    The divisors of 52 are $\pm\{1,2,4,13,26,52\}$.
-%\end{problemgroup}
-\vspace{.5em}
-
-\setcounter{problem}{13}
-%\begin{problemgroup}
-    \begin{problem}
-        Evaluate the following:
-        \begin{enumerate}[label=(\alph*)]
-            \item (42,56),
-            \item \dots
-        \end{enumerate}
-    \end{problem}
-    The expression $(42,56)$, otherwise written as $\gcd(42,56)$, is equivalent to $\max(A\cap B)$ where $A=\{1,2,3,6,7,14,21,42\}$, the divisors of 42, and $B=\{1,2,4,7,8,14,28,56\}$, the divisors of 56. Thus the greatest common divisor of these two numbers is 14.
-%\end{problemgroup}
-\vspace{.5em}
-
-\setcounter{problem}{16}
-%\begin{problemgroup}
-    \begin{problem}
-        Let $b,q,r\in \mathbb{Z}$ and let $a=bq+r$ with $a$ and $b$ not both $0$.
-        \begin{enumerate}[label=(\alph*)]
-            \item Show a common divisor of $a$ and $b$ is a divisor of $r$ and that a common divisor of $b$ and $r$ is a divisor of $a$.
-            \item Conclude that $(a,b)=(r,b)$
-        \end{enumerate}
-    \end{problem}
-    \begin{prop}
-        A common divisor of $a,b\in\mathbb{Z}$ divides $r\ \land$ a common divisor of $b,r\in\mathbb{Z}$ divides $a\implies(a,b)=(r,b)$ given $a=br+r$, $a,b\neq0$.
-    \end{prop}
-    \begin{proof}
-        Suppose $b,q,r\in\mathbb{Z}$ such that $a=bq+r$ and that $a,b$ have a common divisor $y$. The given equation can be rewritten as $iy=jyq+r$ where $iy=a$ and $jy=b$. We can rearrange this equation to isolate $r$: \begin{align*}
-            r &= iy-jyq \\
-            r &= y(i-jq) \\
-            r &= yk
-        \end{align*}
-        knowing $k=(i-jq)$. \underline{We can then say that $y|r$ using the multiple $k\in\mathbb{Z}$.} Similarly let us suppose $b,r$ have a common divisor $z$; they can be rewritten as $r=mz$ and $b=nz$. Using our given expression, we can say
+        The expression from subproblem (b) can be calculated similarly, but it's important to note that $[3]^n=[3]\ \forall n\in\mathbb{Z}_{>0}$. Thus we calculate the expression as
         \begin{align*}
-            a &= nzq + mz \\
-            a &= z(nq+m) \\
-            a &= zl
+            [2]x^{47,891}+[5]x^3+[2]x+[1] &= [2][3]^{47,891}+[5][3]^3 +[2][3]+[1] \\
+            &= [2 \cdot 3] + [5 \cdot 3] + [2 \cdot 3] + [1] \\
+            &= [6 + 15 + 6 + 1] \\
+            &= \boxed{[28] = [4] \pmod{6}}
         \end{align*}
-        knowing $l=(nq+m)$. \underline{Thus $z|a$ using the multiple $l\in\mathbb{Z}$}. Given that $a,b|r$ and $r,b|a$ we know that the set of common divisors between $a,b$ and $r,b$ are the same and hence their maxes are the same. Thus $\gcd(a,b)=\gcd(r,b)$.
-    \end{proof}
+    \end{answer}
 %\end{problemgroup}
-\vspace{.5em}
-
-\setcounter{problem}{18}
+\vspace{5pt}
 %\begin{problemgroup}
     \begin{problem}
-        Let $a,b\in\mathbb{Z}$, not both 0.
+        Since $\mathbb{Z}_n$ has only $n$ elements, it is possible to solve an explicit equation simply by substituting in all possible values of $\mathbb{Z}_n$ and checking for success. Use this method to find all solutions to the following equations.
         \begin{enumerate}[label=(\alph*)]
-            \item If $(a,b)=d$, then $\left(\frac{a}{d},\frac{b}{d}\right)=1$. Hint: Write $ax+by=d$ so that $\frac{a}{d}x+\frac{b}{d}y=1$.
+            \item $x^3 + x^2 + x = [0]$ in $\mathbb{Z}_4$.
             \item \dots
         \end{enumerate}
     \end{problem}
-    We know via Theorem 1.10 from the text that the greatest common divisor of two integers is their minimal linear combination, i.e. $\gcd(a,b)=d\iff d=\min(\{d|ax+by=d, x,y\in\mathbb{Z}\})$. We can then write
-    \begin{align*}
-        ax+by &= d \\
-        \frac{a}{d}x+\frac{b}{d}y &= 1.
-    \end{align*}
-    Because 1 is the smallest outcome of any linear combination assuming $a,b$ are not both zero, we can say that $\frac{a}{d}$ and $\frac{b}{d}$ have a greatest common divisor of 1 and are thus relatively prime. This result is intuitive as the greatest common divisor is 'divided' out of each number, leaving them relatively prime.
+    \begin{answer}
+        There are only four possible values for $x$:
+        \begin{itemize}
+            \item $x=0$: $[0]^3+[0]^2 + [0] = [0]$
+            \item $x=1$: $[1]^3+[1]^2 + [1] = [3] \not\equiv [0]$
+            \item $x=2$: $[2]^3+[2]^2 + [2] = [8 + 4 + 2] = [14] \equiv [2] \not\equiv [0]$
+            \item $x=3$: $[3]^3+[3]^2 + [3] = [27 + 9 + 3] = [39] \equiv [3] \not\equiv [0]$
+        \end{itemize}
+        Therefore $[0]^3+[0]^2 + [0] = [0] \Rightarrow x = [0]$.
+    \end{answer}
 %\end{problemgroup}
-
 
 \iffalse
 

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  10 FEB 2025 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  13 FEB 2025 18:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/rdupl/Documents/LaTeX/MTH4314/HW1/MTH4314HW1
-(c:/Users/rdupl/Documents/LaTeX/MTH4314/HW1/MTH4314HW1.tex
+**c:/Users/rdupl/Documents/LaTeX/MTH4314/HW2/MTH4314HW2
+(c:/Users/rdupl/Documents/LaTeX/MTH4314/HW2/MTH4314HW2.tex
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
 (c:/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -757,8 +757,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip141
 )
 \c@problem=\count352
- (./MTH4314HW1.aux)
-\openout1 = `MTH4314HW1.aux'.
+ (./MTH4314HW2.aux)
+\openout1 = `MTH4314HW2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -837,9 +837,9 @@ Package pgfplots Warning: running in backwards compatibility mode (unsuitable ti
  on input line 52.
 
 Package hyperref Info: Link coloring ON on input line 52.
-(./MTH4314HW1.out) (./MTH4314HW1.out)
+(./MTH4314HW2.out) (./MTH4314HW2.out)
 \@outlinefile=\write4
-\openout4 = `MTH4314HW1.out'.
+\openout4 = `MTH4314HW2.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -869,6 +869,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
+
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -886,27 +891,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4] (./MTH4314HW1.aux)
+[4]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./MTH4314HW2.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
  ***********
-Package rerunfilecheck Info: File `MTH4314HW1.out' has not changed.
-(rerunfilecheck)             Checksum: 93059C799E04FBEAFE3EA9C5398E90AA;340.
+Package rerunfilecheck Info: File `MTH4314HW2.out' has not changed.
+(rerunfilecheck)             Checksum: 81D08216F6E39B507F4B2DF2646CE079;975.
  ) 
 Here is how much of TeX's memory you used:
- 35622 strings out of 474321
- 827035 string characters out of 5740886
- 1343989 words of memory out of 5000000
- 58109 multiletter control sequences out of 15000+600000
- 565347 words of font info for 60 fonts, out of 8000000 for 9000
+ 35673 strings out of 474321
+ 827669 string characters out of 5740886
+ 1347022 words of memory out of 5000000
+ 58120 multiletter control sequences out of 15000+600000
+ 565684 words of font info for 61 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 110i,11n,107p,823b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on MTH4314HW1.pdf (4 pages, 126330 bytes).
+ 110i,13n,107p,765b,724s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on MTH4314HW2.pdf (5 pages, 156887 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
