@@ -168,6 +168,20 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
             \item $a^2 \equiv b^2 \pmod{n}$ but $a \not\equiv\pm b$. Hint: Look in a nonprime modulus.
         \end{enumerate}
     \end{problem}
+    \begin{answer}
+        For part (a) we need to find \( a, b, n \) such that \( ab \equiv 0 \pmod{n} \) but neither \( a \) nor \( b \) are congruent to 0 modulo \( n \). A valid example is: $$
+            n = 6, \ a = 2, \ b = 3 \text{ then } 2 \times 3 = 6 \equiv 0 \pmod{6},
+        $$
+        but neither \( 2 \equiv 0 \pmod{6} \) nor \( 3 \equiv 0 \pmod{6} \). For part (b) we need to find \( a, b, c, n \) such that \( ab \equiv ac \pmod{n} \) with \( a \not\equiv 0 \) and \( b \not\equiv c \). A valid example is: $$
+            n = 10, \ a = 2, \ b = 3, \ c = 8 \text{ then } 2 \times 3 = 6 \equiv 16 = 2 \times 8 \pmod{10}, 
+        $$ $$
+            \text{ then } b = 3 \not\equiv 8 = c \pmod{10}.
+        $$  
+        Here, \( a = 2 \) is not invertible modulo 10 since \( \gcd(2,10) = 2 \). For part (c) we need to find \( a, b, n \) such that \( a^2 \equiv b^2 \pmod{n} \) but \( a \not\equiv \pm b \). A valid example is: $$
+            n = 15, \ a = 4, \ b = 11 \text{ then } 4^2 = 16 \equiv 121 = 11^2 \pmod{15},
+        $$ but \( 4 \not\equiv 11 \pmod{15} \) and \( 4 \not\equiv -11 \equiv 4 \pmod{15} \).
+    \end{answer}
+    
 %\end{problemgroup}
 \vspace{5pt}
 %\begin{problemgroup}
@@ -181,6 +195,31 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
             \item If $n$ has a decimal representation of $a_4a_3a_2a_1a_0$, show $7 \mid n \Leftrightarrow 7 \mid (-3a_4 - a_3 + 2a_2 + 3a_1 +a_0)$. Describe the general pattern.
         \end{enumerate}
     \end{problem}
+    \begin{answer}
+        The following four proofs will answer each respective subproblem.
+        \begin{proof}
+            Suppose $k \mid n$. This implies $ka=n$ for $a\in\mathbb{Z}$. Thus $ka\equiv 0 \pmod{k} \Rightarrow n \equiv 0 \pmod{k}$ as any multiple of $k$ is congruent to 0. Therefore $k \mid n \Leftrightarrow n\equiv 0 \pmod{k}$.
+        \end{proof}
+        \begin{proof}
+            Suppose $2\mid n$. we can then say that $2\mid\sum_{k=0}^{N}a_k 10^k$. For $a_0$, $k=0$ in our summation and thus $2\mid a_0 10^0 \Rightarrow a \mid a_0$. We also know that any further components of the summation are also divisible by 2 as $2 \mid 10$. Therefore $2 \mid n \Leftrightarrow 2$ divides $a_0$ if and only if $a_0$ is even.
+        \end{proof}
+        \begin{remark}
+            It seems that invoking the definition of an even number would sufficiently prove the statement, as of course 2 divides the last digit if the last digit is even.
+        \end{remark}
+        \begin{proof}
+            Suppose $3 \mid \sum_{k=0}^{N}a_k 10^k$. Invoking the result from the first proof yields $\sum_{k=0}^{N}a_k 10^k \equiv 0 \pmod{3}$ which can be simplified to $\sum_{k=0}^{N}a_k \equiv 0 \pmod{3}$ as 10 raised to any power in $\mathbb{N}$ is congruent to 0 modulo 3.
+        \end{proof}
+        \begin{proof}
+            Suppose there exists a number $n$ with decimal representation $a_4a_3a_2a_1a_0$ such that $7\mid n$. This five digit number can be re-expressed in summation form as $a_4(10^4) + a_3(10^3) + a_2(10^2) + a_1(10^1) + a_0(10^0)$. Invoking the result from the first proof, we can now say that $a_4(10^4) + a_3(10^3) + a_2(10^2) + a_1(10^1) + a_0(10^0) \equiv 0 \pmod{7}$. Each of these coefficients can be rewritten modulo 7, yielding the sequence, in ascending order of $k$, as $$
+                1, 3, 2, 6, 4, 5, \dots \pmod{7}
+            $$ or rather, $$
+                1, 3, 2, -1, -3, -2, \dots \pmod{7}
+            $$ Thus the sequence above represents the pattern of coefficients of $a_k10^k$ repeating every 6 digits.
+        \end{proof}
+        \begin{remark}
+            I hope all of these proofs are sufficient enough to show the biconditional relationship established in the subproblems. Any more writing would seem redundant.
+        \end{remark}
+    \end{answer}
 %\end{problemgroup}
 
 \subsubsection{Congruence Classes}
@@ -207,11 +246,27 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
     \setcounter{problem}{40}
     \begin{problem}
         Let $m,n\in\mathbb{N}$. Attempt to define a map $f\operatorname{:}\mathbb{Z}_m \mapsto \mathbb{Z}_n$ by setting $f([a]_m)=[a]_n$ for $[a]_m \in \mathbb{Z}_m$.
-        \begin{enumerate}
+        \begin{enumerate}[label=(\alph*)]
             \item Show this supposed function may not be well defined by finding an example in which $[a]_n \neq [a+m]_n$.
             \item Show $f$ is a well defined function if and only if $n \mid m$. Hint: Show $f$ is well defined if and only if, for each $k \in \mathbb{Z}$ (especially $k=1$), $a+km=a+jn$ for some $j\in \mathbb{Z}$.
         \end{enumerate}
     \end{problem}
+    \begin{answer}
+        \begin{proof}
+            Suppose that $f\operatorname{:}\mathbb{Z}_m\mapsto \mathbb{Z}_n$ such that $f([a]_m)=[a]_n$ for $[a]_m\in \mathbb{Z}_m$. Consider the valid case $f([4]_{10})=[4]_{3}\equiv[1]_{3}$. However $[4]_{3}\neq [4 + 10]_{3}\equiv [2]_3$; therefore the map is not a well defined function. The function $f$ is well-defined if for all $a \in \mathbb{Z}$ and any integer $k$, $$
+                [a]_m = [a+km]_m \Rightarrow [a]_n = [a+km]_n.
+            $$ This condition holds if and only if: $$
+                a \equiv a + km \pmod{n} \quad \forall k \in \mathbb{Z}.
+            $$ Simplifying, we get: $$
+                km \equiv 0 \pmod{n}.
+            $$ This must be true for all integers $k$ particularly for $k = 1$, which means: $$
+                m \equiv 0 \pmod{n} \quad \Rightarrow \quad n \mid m.
+            $$ Conversely, if $n \mid m$, then $m = qn$ for some $q \in \mathbb{Z}$, so: $$
+                a + km \equiv a + kqn \equiv a \pmod{n}.
+            $$
+            Thus, $f([a]_m) = [a]_n$ is well-defined. Therefore, $f$ is a well-defined function if and only if $n \mid m$.
+        \end{proof}
+    \end{answer}
 %\end{problemgroup}
 
 \subsubsection{Arithmetic}
@@ -263,7 +318,7 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
             [3]x^4+x^3+[2]x-[6] &= [3][2]^4 + [2]^3 + [2][2]-[6] \\
             &= [3\cdot 2^4] + [2^3] + [2\cdot 2] - [6] \\
             &= [48 + 8 + 4 - 6] \\
-            &= \boxed{[58] = [3] \pmod{5}}.
+            &= \boxed{[54] = [4] \pmod{5}}.
         \end{align*}
         The expression from subproblem (b) can be calculated similarly, but it's important to note that $[3]^n=[3]\ \forall n\in\mathbb{Z}_{>0}$. Thus we calculate the expression as
         \begin{align*}
