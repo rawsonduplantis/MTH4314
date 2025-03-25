@@ -19,6 +19,7 @@
 \usepackage{tcolorbox}
 \usepackage{mdframed}
 \usepackage{changepage}
+\usepackage{soul}
 \usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
 citecolor=blue, urlcolor=blue]{hyperref}
 
@@ -56,7 +57,6 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \lhead{Rawson Duplantis}
 \chead{MTH 4314: Abstract Algebra}
 \rhead{\today}
-Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ to recognize they are multi-parted.
 
 % Chapter 2 -- 2: 38abefg, 39, 40ab, 45; 3.1 53bcgh, 54ae (for e read v_0 in R, v_0 neq 0), 55b, 56ab, 63 (for a replace Euclidean with Division and for c replace subset with subgroup); 3.2: 57
 
@@ -97,7 +97,7 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
             1 & 2 & 3 & 4 & 5 \\
             2 & 1 & 3 & 5 & 4 \\
             1 & 2 & 3 & 4 & 5
-        \end{pmatrix}\footnotemark= e.
+        \end{pmatrix}\footnotemark= \text{Id}.
         $$ \footnotetext{This may be incorrect notation but it gets the idea across.} For part (f), $|R_2|=3$ as a 240\textdegree\ rotation of a triangle must be repeated three times in order for the triangle to reach its original orientation, $e$. For part (g): $$ \begin{pmatrix}
                 [1] & [1] \\
                 [0] & [1]
@@ -113,7 +113,7 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
             \begin{pmatrix}
                 [1] & [0] \\
                 [0] & [1]
-            \end{pmatrix} = e;
+            \end{pmatrix};
         $$ therefore the order of the matrix is 2.
     \end{answer}
 %\end{problemgroup}
@@ -128,20 +128,29 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
         \end{enumerate}
     \end{problem}
     \begin{answer}
-        For part (a), the set of finite-order elements of $(\mathbb{R}, +)$ is $\{0\}$. For part (b), the set of finite-order elements of $(\mathbb{R^\times}, \cdot)$ is $\{1, -1\}$ as $(-1)^2=1$. For part (c), the set of finite-order elements contains all $n$-th roots of unity.\footnote{In research I found that finite-order elements are called \emph{torsion elements} and that groups can be classified as a \emph{torsion group} (where every element is a torsion element).}
+        For part (a), the set of finite-order elements of $(\mathbb{R}, +)$ is $\{0\}$. For part (b), the set of finite-order elements of $(\mathbb{R^\times}, \cdot)$ is $\{1, -1\}$ as $(-1)^2=1$. For part (c), the set of finite-order elements contains all $n$-th roots of unity. For part (d), the set of finite-order elements of the group of diagonals composed of $\mathbb{R}$ is the trivial set composed of 1s along the diagonal of the $n\times n$ matrix.\footnote{In research, I found that finite-order elements are called \emph{torsion elements} and that groups can be classified as a \emph{torsion group} if it only contains torsion elements. Reportedly this term comes from algebraic topology, but the connection is so complex that I can't understand how they're related---something about twisting a space?}
     \end{answer}
 %\end{problemgroup}
 %\begin{problemgroup}
     \begin{problem}
         Let $G$ be a group and let $g\in G$.
         \begin{enumerate}[label=(\alph*)]
-            \item Show $|g^-1|=g$.
+            \item Show $|g^{-1}|=|g|$.
             \item For $h\in G$, show $|hgh^{-1}|=|g|$.
             \item If $|g|< \infty$, show $g^{-1}=g^{|g|-1}$.
         \end{enumerate}
     \end{problem}
     \begin{answer}
-        Answer here...
+        The following proofs will address each part respectively:
+        \begin{proof}
+            We know that by Theorem 2.11 part (2) that $g^{n_1}=g^{n_2}$ if and only if $n_1 \equiv n_2 \pmod{|g|}$. By the definition of an element's order, $g^n=e$ for some minimal positive exponent $n$. We can then say $g^n = e \Rightarrow (g^n)^{-1} = e^{-1} \Rightarrow g^{-n} = e$ which can only be true if $n$ and $-n$ are equivalent $\pmod{n}$. Therefore, because $-n\equiv n\equiv 0 \pmod{n}\text{, }|g^{-1}|=|g|$.
+        \end{proof}
+        \begin{proof}
+            We can start by rewriting $|hgh^{-1}|=|g|$ as $(hgh^{-1})^n$ which can be simplified: $$hg(h^{-1}h)g(h^{-1}h)gh^{-1}\dots = hg^nh^{-1}.$$ We can also say that $hg^nh^{-1}=e$ is true only when $g^n=e$ as it allows $$hg^nh^{-1}=heh^{-1}=hh^{-1}=e.$$ To demonstrate they are both the minimal exponent, consider $(hgh^{-1})^m=e$. We can simplify it to $e$ as $h^{-1}(hgh^{-1})^mh=g^m=e$, thus $m=n$ and $|hgh^{-1}|=|g|$.
+        \end{proof}
+        \begin{proof}
+            By definition, $g^{|g|}=e$. Multiplying both sides by $g^{-1}$, we get $g^{|g|}g^{-1}=eg^{-1} \Rightarrow g^{|g|-1}=g^{-1}$ by Theorem 2.9 part (1).
+        \end{proof}
     \end{answer}
 %\end{problemgroup}
 \setcounter{problem}{44}
@@ -149,141 +158,107 @@ Note: unrequired parts of multi-part problems are listed obfuscated as $\dots$ t
     \begin{problem} ($g^2=e\implies\text{Abelian}$).
         Suppose $G$ is a group so that $g^2=e$ for every $g\in G$. Show that $G$ is abelian. Hint: Show $g\in G$ implies $g^{-1}=g$ and then apply this fact to the product of two elements.
     \end{problem}
+    \begin{answer}
+        \begin{proof}
+            Suppose $G$ is a group such that $g^2=e\ \forall g\in G$. Thus $g^2g^{-1}=eg^{-1}\Rightarrow g = g^{-1}$ by Theorem 2.9 part (1). Next, using another element $h$ and Theorem 2.9 part (2), we can say: $$
+                (gh)^{-1} = h^{-1}g^{-1} = hg \text{ and } (gh)^{-1} = (gh)
+            $$ as every element is its own inverse in this given $G$. Therefore $G$ must be abelian.
+        \end{proof}
+    \end{answer}
 %\end{problemgroup}
+
+% Chapter 2 -- 2: 38abefg, 39, 40ab, 45; 3.1 53bcgh, 54ae (for e read v_0 in R, v_0 neq 0), 55b, 56ab, 63 (for a replace Euclidean with Division and for c replace subset with subgroup); 3.2: 57
 
 \subsection{Subgroups and Direct Products}
 \subsubsection{Subgroups}
-\subsubsection{Direct Products}
-
-\iffalse
-
-\lhead{Rawson Duplantis}
-\chead{MTH 4329: Complex Variables}
-\rhead{\today}
+\setcounter{problem}{52}
 %\begin{problemgroup}
     \begin{problem}
-        Prove that if $z_1$, $z_2\in\mathbb{C}$ and $z_1z_2=0$ then either $z_1=0$ or $z_2=0$.
-    \end{problem}
-    \begin{proof}
-        Suppose that $\exists\ z_1$, $z_2\in\mathbb{C} \land z_1z_2=0$. We can express their product as
-        $$(x_1, y_1)(x_2, y_2) = (x_1x_2 - y_1y_2, x_2y_1 + y_2x_1)= (0,0)$$ which implies $x_1x_2 - y_1y_2 = x_2y_1+y_2x_1$. From this, rearranging yields
-        \begin{align*}
-            x_1x_2 - y_1y_2 &= x_2y_1 + y_2x_1 \\
-            x_1x_2 - y_2x_1 &= x_2y_1 + y_1y_2 \\
-            x_1(x_2 - y_2) &= y_1(x_2 + y_2).
-        \end{align*}
-        Since there is no choice of $x_2,y_2\in\mathbb{Z}\backslash\{0\}$ that makes $x_2 - y_2=x_2 + y_2$ true, $(x_1, y_1)=0 \lor (x_2, y_2)=0$. Thus there are no proper zero divisors in $\mathbb{C}$.
-    \end{proof}
-%\end{problemgroup}
-\begin{remark}
-    Is it sufficient to say that $\mathbb{C}$ is a field, all fields do not have proper zero divisors, thus $\mathbb{C}$ has no proper zero divisors?
-\end{remark}
-\vspace{.5em}
-%\begin{problemgroup}
-    \begin{problem}
-        Do each of the following:
+        Show the following subsets are groups:
         \begin{enumerate}[label=(\alph*)]
-            \item Write the complex number $\frac{1+2i}{3+4i}$ in the form $a+bi$.
-            \item Find $\operatorname{Re}\left(\frac{2-i}{2+i}\right)$ and $\operatorname{Im}\left(\frac{2-i}{2+i}\right)$.
+            \setcounter{enumi}{1}
+            \item $\{5^a\mid a \in \mathbb{Q}\} \subseteq \mathbb{R}^\times$.
+            \item $k\mathbb{Z}_n=\{k[m]\mid[m]\in\mathbb{Z}_n\}\subseteq \mathbb{Z}_n$ where $k\in \mathbb{Z}$ and $n\in\mathbb{N}$.
+            \setcounter{enumi}{6}
+            \item $SL(n,\mathbb{R})\subseteq GL(n,\mathbb{R})$.
+            \item $\{T \in GL(n,\mathbb{R}) \mid Tv_0=\lambda v_0, \lambda \in \mathbb{R}^{+}\} \subseteq GL(n,\mathbb{R})$ for some fixed $v_0\in \mathbb{R}^n$.
         \end{enumerate}
     \end{problem}
-    For the first subproblem, we will re-express the fraction using the denominators conjugate, $3-4i$:
-    \begin{align*}
-        \left(\frac{1+2i}{3+4i}\right)\left(\frac{3-4i}{3-4i}\right) &= \frac{(1+2i)(3-4i)}{9-16i^2} \\
-        &= \frac{3+2i-8i^2}{25} \\
-        &= \frac{11}{25}+\frac{2}{25}i.
-    \end{align*}
-    \framebox[1.1\width]{Therefore $a=\frac{11}{25}$ and $b=\frac{2}{25}$.} For the second subproblem, we will complete the same computation but will present the real and imaginary components separately. Using the denominator's conjugate of $2-i$: $$ \left(\frac{2-i}{2+i}\right)\left(\frac{2-i}{2-i}\right) = \frac{4-4i+i^2}{4 - i^2} = \frac{3-4i}{5}. $$ \framebox[1.1\width]{Therefore $\operatorname{Re}\left(\frac{2-i}{2+i}\right)=\frac{3}{5}$ and $\operatorname{Im}\left(\frac{2-i}{2+i}\right)=\frac{-4}{5}$.}
+    \begin{answer}
+        Answer here...
+    \end{answer}
 %\end{problemgroup}
-\vspace{.5em}
 %\begin{problemgroup}
     \begin{problem}
-        Prove that if $|z|=2$, then $$\frac{1}{|z^4-4z^2+3|}\leq\frac{1}{3}.$$ (Hint: factor $z^4-4z^2+3$ and then use the reverse triangle inequality.)
+        Show the following are not subgroups:
+        \begin{enumerate}[label=(\alph*)]
+            \item $\{5^a \mid a \in \mathbb{Q}^+\} \subseteq \mathbb{R}^\times$.
+            \setcounter{enumi}{4}
+            \item For $v_0\in \mathbb{R}^n$, $\{T \in GL(n,\mathbb{R}) \mid Tv_0=2v_0\} \subseteq GL(n,\mathbb{R})$.
+        \end{enumerate}
     \end{problem}
-    \begin{proof}
-        Suppose $\exists z\in\mathbb{C}$ where $|z|=2$. Given a polynomial $z^4-4z^2+3$, we can determine using the reverse triangle inequality that
-        \begin{align*}
-            |z^4-4z^2+3| &\geq |z^4|-|-4z^2|-|3| \\
-                         &\geq |2^4-4(2)^2-3| \\
-                         &\geq 3
-        \end{align*}
-        Therefore $|z^4-4z^2+3|^{-1}\leq\frac{1}{3}$.
-    \end{proof}
-    This result can be confirmed using the modulus-polynomial method---if that accurately refers to the procedure---used in the textbook by finding the moduli of the factors of $|z^4-4x^2+3|$, $|z^2-3|$ and $|z^2-1|$, as 1 and 3 respectively. We then take the greatest number of the two as our reciprocal polynomial's upper bound, in this case $\frac{1}{3}$.
+    \begin{answer}
+        Answer here...
+    \end{answer}
+%\end{problemgroup}
+%\begin{problemgroup}
+    \begin{problem}
+        Calculate the centralizers of the following subsets:
+        \begin{enumerate}[label=(\alph*)]
+            \stepcounter{enumi}
+            \item $\{\begin{pmatrix}
+                1 & 1 \\
+                0 & 1
+            \end{pmatrix}\} \subseteq GL(2,\mathbb{R})$.
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        Answer here...
+    \end{answer}
+%\end{problemgroup}
+%\begin{problemgroup}
+    \begin{problem}
+        Show the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item $\langle[2]\rangle=U_5$.
+            \item $\langle 3,11 \rangle = \mathbb{Z}$.
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        Answer here...
+    \end{answer}
+%\end{problemgroup}
+\setcounter{problem}{62}
+%\begin{problemgroup}
+    \begin{problem}
+        (Subgroups of $\mathbb{Z}$ and $\mathbb{Z}_n$) Complete the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item If $H\neq\{0\}$ is a subgroup of $\mathbb{Z}$, let $k$ be the minimal element of $\mathbb{N}\cap H$. Show $k$ exists and that $H=\langle k\rangle$. Hint: If $m\in H$, use the \st{Euclidean} Division Algorithm to write $m=kq+r$ with $0\leq r < k$ and show $kq\in H$ so that $r \in H$.
+            \item Conclude that the set of subgroups of $\mathbb{Z}$ is $\{\langle k\rangle=k\mathbb{Z} \mid k\in\mathbb{Z}_{\geq 0}\}$.
+            \item For $n\in \mathbb{N}$, show that every \st{subset} subgroup of $\mathbb{Z}_n$ is of the form $\langle k \rangle$ for $0 \leq k < n$.
+            \item Show $\langle [k] \rangle = \langle [(k,n)] \rangle$. Hint: For $\subseteq$, use $(k,n)\operatorname{\mid} k$. For $\supseteq$, write $(k,n)=kx+ny$.
+            \item Conclude that the set of subgroups of $\mathbb{Z}_n$ is $\{\langle [k] \rangle \mid k \in \mathbb{N}\text{ and } k\mid n\}$.
+            \item Find all subgroups of $\mathbb{Z}_{15}$.
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        Answer here..
+    \end{answer}
 %\end{problemgroup}
 
-\vspace{1em}
-\begin{problem}
-    Prove the following:
-    \begin{enumerate}[label=(\alph*)]
-        \item $z$ is real if and only if z=$\bar{z}$.
-        \item $z$ is either real or purely imaginary if and only if $(\bar{z})^2=z^2$.
-    \end{enumerate}
-\end{problem}
-\begin{proof}
-    Suppose $\exists z$ such that $z \in \mathbb{R}$. Such a real number in the complex plane doesn't have an imaginary component and is represented simply as $(x,0)$; because $\operatorname{Im}(z)$ is the opposite of its conjugate, a real number remains a real number as 0 is neutral. If we are to suppose that $z=\bar{z}$, $\operatorname{Im}(z)$ and $\operatorname{Im}(\bar{z})$ are implied to be the same, which is only true for the neutral zero as $\operatorname{Im}(z)=-\operatorname{Im}(\bar{z})$. Therefore $z\in\mathbb{R}\iff z=\bar{z}$.
-\end{proof}
-\begin{proof}
-    Suppose $\exists z \in \mathbb{C}$. If we also suppose that such a number represented in its component form $a+bi$ is either completely real or completely imaginary, either $z=a$ or $z=bi$ with corresponding $\bar{z}=a$ or $\bar{z}=-bi$. In the real case, $z^2=a^2=(\bar{z})^2$ while in the 'imaginary' case $z^2=(bi)^2=(-bi)^2=(\bar{z})^2$. As clearly demonstrated by the commutativity of the second expression, the reverse relationship is true and thus $z$ is either real or purely imaginary $\iff (\bar{z})^2=z^2$.
-\end{proof}
+\subsubsection{Direct Products}
+\setcounter{problem}{56}
+%\begin{problemgroup}
+    \begin{problem}
+        Evaluate the following:
+        \begin{enumerate}[label=(\alph*)]
+            \item $([3]_7,[5]_6) \cdot ([2]_7, [5]_6) \in U_7\times U_6$.
+            \item $([2]_4, [3]_5, [6]_7) + ([3]_4, [2]_5, [1]_7) \in \mathbb{Z}_4 \times \mathbb{Z}_5 \times \mathbb{Z}_7$.
+        \end{enumerate}
+    \end{problem}
+    \begin{answer}
+        Answer here...
+    \end{answer}
+%\end{problemgroup}
 
-\vspace{1em}
-\begin{problem}
-    With $z=x+yi$, write the equation $|2\bar{z}+i|=4$ in terms of $x$ and $y$. Sketch the graph of this equation and identify what kind of equation it is.
-\end{problem}
-If we are to substitute $z=x+yi$ into $|2\bar{z}+i|=4$, we can say $$|2(x-yi)+i|=4\implies |2x-2yi+i|=4.$$ We can calculate the modulus of this expression as the following: $$|2x + (1-2y)i|=4\implies \sqrt{4x^2 + 1 - 4y + 4y^2}=4\implies x^2+y^2-y-\frac{15}{4}=0.$$ Further simplification involves completing the square by separating $\frac{1}{4}$ out: $$x^2+(y^2-y+\frac{1}{4})-\frac{16}{4}=0\implies x^2+(y-\frac{1}{2})^2=4.$$ \framebox[1.1\width]{Therefore $|2\bar{z}+1|=4$ is a circle of radius 2 centered around $(0,\frac{1}{2})$.}
-
-% \maketitle
-\section{Intro to LaTeX}
-Hi there! Here is a brief introduction to LaTeX. It's a great system for creating beautifully typeset scientific documents. The main difference between LaTeX and your standard word processing program, is that you write code that tells LaTeX what you want it to display and the program creates handles all the little things that make your math look great.
-
-Lets start with some basics. You can type text normally but when you want to type some math start and end your expression with a \$. For example if I type the Pythagorean Theorem, as long as I surround my equation with dollar signs I get $a^2 +b^2 = c^2$. If I want to emphasize an equation simply put TWO dollar signs around the mathematics. For example a similar expression with two dollar signs around it looks like so: $$x_1^n + x_2^n = x_3^n.$$ (check out the code to see how to generate subscripts!)
-
-In LaTeX we use the curly braces, \{ \}, to group things. If we want to raise $e$ to the $42$nd power and we just type it with no grouping we get $e^42$ which is not what we want. Surrounding the $42$ with curly braces gives $e^{42}$.
-
-The really really really great thing about latex is the HUGE library of mathematical symbols, every symbol starts with a $\backslash$, so if I want a nice pi, I just type $\backslash$pi in math mode like so: $\pi$. Want an integral? Try $\backslash$int, want a fraction? Try $\backslash$frac\{a\}\{b\} (this gives $\frac{a}{b}$) Here is a more complicated example:
-$$
-\int_a^b f \left(\frac{x}{2} \right) \ dx =2\left( F\left(\frac{b}{2} \right) - F\left(\frac{a}{2}\right) \right)
-$$
-(those nice sized parenthesis come from using the $\backslash$left( and $\backslash$right) commands). If you are wondering what the latex command for a symbol is, just try and guess it. If that doesn't work, google it!
-
-There are a few little tricks to making your math look nice, one is the align environment which lets you type multiple lines of aligned mathematical expressions. For instance:
-\begin{align*}
-(x^2+y^2)(z^2+w^2) & = (xz)^2 + (yz)^2 + (xw)^2 + (yw)^2 \\
-& =  (xz)^2 + 2wxyz + (yw)^2 + (yz)^2 - 2 wxyz + (xw)^2 \\
-&= (xz+yw)^2 + (yz-xw)^2
-\end{align*}
-here the $\backslash\backslash$ is a line break and the $\&$ is an alignment character. 
-\section{Sample Proofs}
-\begin{problem} $1^3+2^3+\ldots +n^3 = \left[ \frac{n(n+1)}{2}\right]^2$  for all natural numbers. 
-
-\end{problem}
- 
-\begin{proof}
-We proceed by induction. When $n=1$ we have 
-$$
-1^3 + \ldots + n^3 = 1^3 =1
-$$
-and
-$$
-\left[ \frac{n(n+1)}{2}\right]^2=\left[ \frac{1(1+1)}{2}\right]^2 = 1^2 =1.
-$$
-Thus the equation holds when $n=1$.
-
-Now assume the equation holds for some $n \in \mathbb N$. Then by our assumption we have
-\begin{align*}
-1^3 + \ldots + n^3 + (n+1)^3& =   \left[ \frac{n(n+1)}{2}\right]^2 + (n+1)^3 = (n+1)^2\left( \frac{n^2}{4} + (n+1)\right) \\
-&=(n+1)^2\left( \frac{n^2+4n+4}{4} \right) = (n+1)^2\frac{(n+2)^2}{4}  \\ &=  \left[ \frac{(n+1)(n+2)}{2}\right]^2.
-\end{align*}
-Therefore, by induction, the equation holds for all $n\in \mathbb N$.
-\end{proof}
-
-\begin{problem} Prove $A \subseteq B \Rightarrow A \cap C \cont B \cap C$
-\end{problem}
-\begin{proof} Assume $A \cont B $ and let $x\in A \cap C$. If $x \in  A \cap C$, then $x\in A$ and $x \in C$. As $x\in A$, by assumption we have that $x \in B$. Thus $x \in B$ and $x \in C$, giving $x\in B \cap C$. Therefore if $A \subseteq B $, then $A \cap C \cont B \cap C$.
-\end{proof}
-
-% THE DOCUMENT IS ESSENTIALLY DONE AT THIS POINT, NO NEED TO EDIT ANYTHING BELOW THIS______________________________________________________________________________________________
- 
-\fi
 \end{document}
