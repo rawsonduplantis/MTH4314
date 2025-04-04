@@ -155,7 +155,7 @@ citecolor=blue, urlcolor=blue]{hyperref}
 %\end{problemgroup}
 \setcounter{problem}{44}
 %\begin{problemgroup}
-    \begin{problem} ($g^2=e\implies\text{Abelian}$).
+    \begin{problem}[$g^2=e\implies\text{Abelian}$]
         Suppose $G$ is a group so that $g^2=e$ for every $g\in G$. Show that $G$ is abelian. Hint: Show $g\in G$ implies $g^{-1}=g$ and then apply this fact to the product of two elements.
     \end{problem}
     \begin{answer}
@@ -185,7 +185,38 @@ citecolor=blue, urlcolor=blue]{hyperref}
         \end{enumerate}
     \end{problem}
     \begin{answer}
-        Answer here...
+        In order to demonstrate the given subsets are groups, we need to show that their operation is closed, that all elements are associative, that there exists an identity, and that each element has an inverse. 
+        \begin{enumerate}[label=(\alph*)]
+            \stepcounter{enumi}
+            \item The subset from part (b) is a group as it:\begin{enumerate}[label=(\roman*)]
+                \item is closed, as $(5^a)\cdot(5^n) = 5^{a+n}$, $a+n\in\mathbb{Q}\ \forall n\in \mathbb{Q}$;
+                \item is associative, as $(5^{a}5^{b})5^{c}=5^{a+b+c}=5^{a}(5^{b}5^{c})\ \forall b,c\in\mathbb{Q}$;
+                \item contains an identity, $5^0$, as $5^a5^0=5^{a+0}=5^{a}$, and;
+                \item has an inverse for every element, as $5^a5^{-a}=5^{a-a}=5^0$.
+            \end{enumerate}
+            \item The subset from part (c) is a group as it:
+            \begin{enumerate}[label=(\roman*)]
+                \item is closed, as $k[i]+k[j]=k[i+j]\in k\mathbb{Z}_n$;
+                \item is associative, as $k[i]+(k[j]+k[l]) = (k[i]+k[j])+k[l] = k[i + j + l]$;
+                \item contains an identity, as $k[0]\equiv 0 \pmod{n}$, and;
+                \item has an inverse for every element, as $k[i]+k[-i]=k[0] \equiv 0 \pmod{n}$.
+            \end{enumerate}
+            \setcounter{enumi}{6}
+            \item The subset from part (g) is a group as it:
+            \begin{enumerate}[label=(\roman*)]
+                \item is closed, as two $n\times n$ invertible matrices with $\det = 1$ will produce an invertible matrix with $\det = 1$;
+                \item is associative, as all matrices in the general linear group are associative;
+                \item contains an identity, the identity matrix with $\det(I_n) = 1$, and;
+                \item has an inverse for every element, as $\det(A) = 1 \Rightarrow \det(A^{-1}) = \frac{1}{\det(A)} = 1^{-1} = 1$.
+            \end{enumerate}
+            \item The subset from part (h) is a group as it:
+            \begin{enumerate}[label=(\roman*)]
+                \item is closed, as $(ST)v_0 = S(Tv_0) = S(\lambda v_0) = \lambda Sv_0 = \lambda\mu v_0$;
+                \item is associative, as all elements in the general linear group are associative;
+                \item contains an identity, the identity matrix: $I_nv_0 = 1v_0$, and;
+                \item has an inverse for every element, as $v_0=T^{-1}Tv_0=T^{-1}\lambda v_0 = \lambda T^{-1}v_0 \Rightarrow T^{-1}v_0=\lambda^{-1}v_0$.
+            \end{enumerate}
+        \end{enumerate}
     \end{answer}
 %\end{problemgroup}
 %\begin{problemgroup}
@@ -198,7 +229,7 @@ citecolor=blue, urlcolor=blue]{hyperref}
         \end{enumerate}
     \end{problem}
     \begin{answer}
-        Answer here...
+        The subsets are not groups if they fail to uphold one of the four axioms discussed above. The subset from part (a) fails to be a group as the exclusion of $-a$ from $Q^{+}$ removes all possible non-trivial inverses from the set. The subset from part (e) fails to be a group as it excludes the identity matrix, which never maps to an eigenvalue of $2$.
     \end{answer}
 %\end{problemgroup}
 %\begin{problemgroup}
@@ -213,8 +244,42 @@ citecolor=blue, urlcolor=blue]{hyperref}
         \end{enumerate}
     \end{problem}
     \begin{answer}
-        Answer here...
-    \end{answer}
+        Let A=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}. We wish to compute the centralizer of \(A\) in \(GL(2,\mathbb{R})\), namely
+        \[
+        C_{GL(2,\mathbb{R})}(A)=\{X\in GL(2,\mathbb{R}) \mid XA=AX\}.
+        \]
+        
+        Take an arbitrary \(X=\begin{pmatrix} a & b \\ c & d \end{pmatrix}\in GL(2,\mathbb{R})\). Then
+        \[
+        XA=\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}
+        =\begin{pmatrix} a & a+b \\ c & c+d \end{pmatrix},
+        \]
+        and
+        \[
+        AX=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}
+        =\begin{pmatrix} a+c & b+d \\ c & d \end{pmatrix}.
+        \]
+        
+        For \(XA=AX\), we equate the corresponding entries:
+        \begin{enumerate}[label=(\roman*)]
+            \item From the \((1,1)\)-entry: \(a = a+c\) implies \(c=0\).
+            \item From the \((1,2)\)-entry: \(a+b = b+d\) implies \(a = d\).
+            \item The \((2,1)\)-entry yields \(c=c\), which is automatically satisfied.
+            \item The \((2,2)\)-entry gives \(c+d = d\); with \(c=0\) this holds automatically.
+        \end{enumerate}
+        
+        Thus, every matrix \(X\) commuting with \(A\) must be of the form
+        \[
+        X=\begin{pmatrix} a & b \\ 0 & a \end{pmatrix},
+        \]
+        where \(a\in \\mathbb{R}^\times\) (to ensure that \(X\) is invertible) and \(b\in \mathbb{R}\).
+        
+        Hence, the centralizer of \(A\) in \(GL(2,\mathbb{R})\) is
+        \[
+        C_{GL(2,\mathbb{R})}(A)=\left\{\begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \mid a\in \mathbb{R}^\times,\; b\in \mathbb{R}\right\}.
+        \]
+        \end{answer}
+        
 %\end{problemgroup}
 %\begin{problemgroup}
     \begin{problem}
@@ -230,8 +295,8 @@ citecolor=blue, urlcolor=blue]{hyperref}
 %\end{problemgroup}
 \setcounter{problem}{62}
 %\begin{problemgroup}
-    \begin{problem}
-        (Subgroups of $\mathbb{Z}$ and $\mathbb{Z}_n$) Complete the following:
+    \begin{problem}[Subgroups of $\mathbb{Z}$ and $\mathbb{Z}_n$] 
+        Complete the following:
         \begin{enumerate}[label=(\alph*)]
             \item If $H\neq\{0\}$ is a subgroup of $\mathbb{Z}$, let $k$ be the minimal element of $\mathbb{N}\cap H$. Show $k$ exists and that $H=\langle k\rangle$. Hint: If $m\in H$, use the \st{Euclidean} Division Algorithm to write $m=kq+r$ with $0\leq r < k$ and show $kq\in H$ so that $r \in H$.
             \item Conclude that the set of subgroups of $\mathbb{Z}$ is $\{\langle k\rangle=k\mathbb{Z} \mid k\in\mathbb{Z}_{\geq 0}\}$.
