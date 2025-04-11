@@ -52,10 +52,14 @@ citecolor=blue, urlcolor=blue]{hyperref}
 \newtheorem{defn}{Definition}
 \newtheorem{thm}{Theorem}
 \newtheorem{exer}{Exercise}
+\newtheorem{lma}{Lemma}
+\newtheorem{crlly}{Corollary}
 \numberwithin{problem}{section} % Reset problem counter in each section
 \numberwithin{defn}{section} % Reset problem counter in each section
 \numberwithin{thm}{section} % Reset problem counter in each section
 \numberwithin{exer}{section} % Reset problem counter in each section
+\numberwithin{lma}{section} % Reset problem counter in each section
+\numberwithin{crlly}{section} % Reset problem counter in each section
 \theoremstyle{remark}  % Style for remarks
 \newtheorem*{remark}{Remark}
 \newenvironment{answer}
@@ -161,8 +165,170 @@ The following is a compiled review for the second exam according to the study gu
 \end{exer}
 
 \subsection{Book Proofs}
+\setcounter{thm}{22}
+\begin{thm}
+    Let $G$ be a group and let $g \in G$. Then $c_g$ is an automorphism.
+\end{thm}
+\begin{proof}
+    We must show that the conjugation map $c_g$ is first, a homomorphism, second, an isomorphism, and third, from $G$ to $G$.
+    \begin{enumerate}
+        \item \ul{Homomorphism}: Let $h_1,h_2\in G$. We know that $$c_g(h_1h_2)=gh_1h_2g^{-1}=gh_1g^{-1}gh_2g^{-1}=c_g(h_1)c_g(h_2)$$ therefore $c_g$ is a homomorphism.
+        \item \ul{Isomorphism}: Because $c_{g^{-1}}$ is a valid inverse of $c_g$, we know that $c_g$ is a bijection and thus also an isomorphism.
+        \item \ul{$G \to G$}: As $g,h_1,h_2\in G$, $c_g$ thus maps $G\to G$ and is consequently an automorphism.
+    \end{enumerate}
+\end{proof}
+
+\stepcounter{thm}
+\begin{thm}
+    Let $\varphi\operatorname{:} G \to H$ be a homomorphism between groups and let $g\in G$.
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item $\varphi(e_G)=e_h$.
+        \item $\varphi(g^{-1})=\varphi(g)^{-1}$.
+        \item $\varphi$ is one-to-one if and only if $\ker \varphi=\{e_G\}$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    For part (3), because $\varphi$ is a homomorphism, we can say \begin{align*}
+        \varphi(e_G) &= \varphi(e_G)\varphi(e_G) \\
+        \varphi(e_G)\varphi(e_G)^{-1} &= \varphi(e_G)\varphi(e_G)\varphi(e_G)^{-1} \\
+        e_He_H &= \varphi(e_G) \\
+        e_H &= \varphi(e_G).
+    \end{align*}
+    For part (4), we can similarly say
+    \begin{align*}
+        e_H = \varphi(e_G) = \varphi(gg^{-1}) &= \varphi(g)\varphi(g^{-1}) \\
+        &\Rightarrow \varphi(g)^{-1} = \varphi(g^{-1}).
+    \end{align*}
+    For part (8), we must show that $\varphi$ is one-to-one implies that $\ker \varphi=\{e_G\}$, and vice versa.
+    \begin{enumerate}
+        \item \ul{$\varphi$ is one-to-one $\Rightarrow \ker \varphi = \{e_G\}$}: If we suppose that $\varphi$ is one-to-one, we can say that given an element $g\in G$ such that $\varphi(g)=e_H\in H$, we know that $g=e_G$ as $e_G\mapsto e_H$ in any one-to-one mapping.
+        \item \ul{$\ker \varphi = \{e_G\}\Rightarrow \varphi$ is one-to-one}: Suppose we have $g_1,g_2\in G$ such that $\varphi(g_1)=\varphi(g_2)$. We can then say that $\varphi(g_1)\varphi(g_2^{-1})=\varphi(g_2g_2^{-1})\Rightarrow \varphi(g_1g_2^{-1}) = e_H$ which implies $g_1=g_2$, which forces $\varphi$ to be one-to-one.
+    \end{enumerate}
+    Thus "$\varphi$ is one-to-one" $\Leftrightarrow \ker \varphi = \{e_G\}$.
+\end{proof}
+
+\setcounter{lma}{26}
+\begin{lma}
+    Let $G$ be a group, let $H \leq G$, and let $g_1,g_2\in G$. Then $g_1H=g_2H$ if an only if $g_2=g_1h$ for some $h\in H$.
+\end{lma}
+\begin{proof}
+    To prove their biconditional relationship, we must prove that $g_1H=g_2H\Rightarrow g_2=g_1h$ for some $h\in H$ and $g_2=g_1h$ for some $h\in H \Rightarrow g_1H=g_2H$.
+    \begin{enumerate}
+        \item \ul{$g_1H=g_2H \Rightarrow \exists h\in H,\ g_2=g_1h$}: If we suppose $g_1H=g_2H$, we know that $e\in H$ implies $g_2\in g_2H$; consequently $g_2\in g_1H$ therefore $\exists h\in H,\ g_2=g_1h$.
+        \item \ul{$\exists h\in H,\ g_2=g_1h\Rightarrow g_1H=g_2H$}: If we then suppose that $\exists h\in H,\ g_2=g_1h$, we know that $g_2h=g_1hh$ implies $g_2H \subseteq g_1H$ as $H$ is closed. For the reverse, we can rewrite the starting expression as $g_2h^{-1}=g_1$ which can be similarly manipulated as $g_2h^{-2}=g_1h^{-1}$ which implies $g_2H \supseteq g_1 H$ when all $h$ are taken into account. Therefore these two subsets are equal, $g_1H=g_2H$.
+    \end{enumerate}
+    Thus $g_1H=g_2H \Leftrightarrow \exists h\in H,\ g_2=g_1h$.
+\end{proof}
+
+\setcounter{crlly}{28}
+\begin{crlly}
+    Let $G$ be a finite group.
+    \begin{enumerate}
+        \item If $g\in G$, then $|g|$ divides $|G|$.
+        \item In particular, $g^{|G|}=e$.
+    \end{enumerate}
+\end{crlly}
+\begin{proof}
+    For part (1), we know that $|g|=|\langle g \rangle|$ and that $\langle g \rangle$ is a subgroup of $G$; therefore $|g|$ does divides $G$ by Lagrange's theorem as $G$ is a finite group. For part (2), we can say that $|G|=|g|k$ for some $k\in \Z_{>0}$. Therefore $g^{|G|}=g^{|g|k}=(g^{|g|})^k=e^k=e$.
+\end{proof}
+
+\setcounter{thm}{34}
+\begin{thm}[First Isomorphism Theorem]
+    Let $\varphi\operatorname{:}G\to H$ be a homomorphism of groups.
+    \begin{enumerate}
+        \item $\ker\varphi$ is a normal subgroup of $G$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    For part (1), suppose $k\in \ker \varphi$ and $g\in G$. By definition of the kernel: $$\varphi(gkg^{-1})=\varphi(g)\varphi(k)\varphi(g)^{-1}=\varphi(g)e_H\varphi(g)^{-1}=e_H.$$ Therefore $g\ker\varphi g^{-1}=\ker\varphi$ and $\ker\varphi$ is normal.   
+\end{proof}
+
+\setcounter{lma}{38}
+\begin{lma}[Cauchy's Theorem for Finite Abelian Groups]
+    Let $G$ be a finite abelian group and let $p$ be a positive prime with $p\mid |G|$. Then $G$ has an element of order $p$.
+\end{lma}
+\begin{proof}
+    We can express $G$ as $\{g_1,\dots,g_n\}$ with each elements order, $|g_i|$, represented by $d_i$. We can define a subgroup $H$ as a direct product of $n$ number of $\Z_{d_i}$, expressed as $\prod_{i=1}^{n}\Z_{d_i}$. We can then define a map $\varphi\operatorname{:}H\to G$ by $\varphi(k_1,\dots,k_n)=g^{k_1}\dots g^{k_n}$; this is a well-defined, surjective homomorphism as $G$ is abelian. Therefore, by the First Isomorphism Theorem, $|H|=|\ker\varphi||G|$. If $p$ divides $|G|$, $p$ must also then divide $|H|$ and consequently $\prod^{n}_{i=1}d_i$. Therefore $p$ must divide at least one $d_i$ and $g=g_i^{d_i/p}$ which is only true if $d_i=p$; thus $p$ is the order of at least one element $g_i$.
+\end{proof}
 
 \subsection{Homework Exercises}
+
+\setcounter{exer}{52}
+\begin{exer}
+    Show the following subsets are groups:
+    \begin{enumerate}[label=(\alph*)]
+        \setcounter{enumi}{1}
+        \item $\{5^a\mid a \in \mathbb{Q}\} \subseteq \mathbb{R}^\times$.
+        \item $k\mathbb{Z}_n=\{k[m]\mid[m]\in\mathbb{Z}_n\}\subseteq \mathbb{Z}_n$ where $k\in \mathbb{Z}$ and $n\in\mathbb{N}$.
+        \setcounter{enumi}{6}
+        \item $SL(n,\mathbb{R})\subseteq GL(n,\mathbb{R})$.       
+    \end{enumerate}
+\end{exer}
+\begin{answer}
+    In order to demonstrate the given subsets are groups, we need to show that their operation is closed, that all elements are associative, that there exists an identity, and that each element has an inverse. 
+    \begin{enumerate}[label=(\alph*)]
+        \stepcounter{enumi}
+        \item The subset from part (b) is a group as it:
+        \begin{enumerate}[label=(\roman*)]
+            \item is closed, as $(5^a)\cdot(5^n) = 5^{a+n}$, $a+n\in\mathbb{Q}\ \forall n\in \mathbb{Q}$;
+            \item is associative, as $(5^{a}5^{b})5^{c}=5^{a+b+c}=5^{a}(5^{b}5^{c})\ \forall b,c\in\mathbb{Q}$;
+            \item contains an identity, $5^0$, as $5^a5^0=5^{a+0}=5^{a}$, and;
+            \item has an inverse for every element, as $5^a5^{-a}=5^{a-a}=5^0$.
+        \end{enumerate}
+        \item The subset from part (c) is a group as it:
+        \begin{enumerate}[label=(\roman*)]
+            \item is closed, as $k[i]+k[j]=k[i+j]\in k\mathbb{Z}_n$;
+            \item is associative, as $k[i]+(k[j]+k[l]) = (k[i]+k[j])+k[l] = k[i + j + l]$;
+            \item contains an identity, as $k[0]\equiv 0 \pmod{n}$, and;
+            \item has an inverse for every element, as $k[i]+k[-i]=k[0] \equiv 0 \pmod{n}$.
+        \end{enumerate}
+        \setcounter{enumi}{6}
+        \item The subset from part (g) is a group as it:
+        \begin{enumerate}[label=(\roman*)]
+            \item is closed, as two $n\times n$ invertible matrices with $\det = 1$ will produce an invertible matrix with $\det = 1$;
+            \item is associative, as all matrices in the general linear group are associative;
+            \item contains an identity, the identity matrix with $\det(I_n) = 1$, and;
+            \item has an inverse for every element, as $\det(A) = 1 \Rightarrow \det(A^{-1}) = \frac{1}{\det(A)} = 1^{-1} = 1$.
+        \end{enumerate}
+    \end{enumerate}
+\end{answer}
+
+\setcounter{exer}{56}
+\begin{exer}
+    Evaluate the following:
+    \begin{enumerate}[label=(\alph*)]
+        \item $([3]_7,[5]_6) \cdot ([2]_7, [5]_6) \in U_7\times U_6$.
+        \item $([2]_4, [3]_5, [6]_7) + ([3]_4, [2]_5, [1]_7) \in \mathbb{Z}_4 \times \mathbb{Z}_5 \times \mathbb{Z}_7$.
+    \end{enumerate}
+\end{exer}
+\begin{answer}
+    For part (a), we perform component-wise multiplication: $$[3]_7\cdot[2]_7=[6]_7,\ [5]_6\cdot[5]_6=[1]_6.$$ Therefore the answer in $U_7\times U_6$ is $([6]_7,[1]_6)$. For part (b) we perform component-wise addition: $$[2]_4+[3]_4=[1]_4,\ [3]_5+[2]_5=[0]_5,\ [6]_7+[1]_7=[0]_7.$$ Therefore the answer in $\Z_4 \times \Z_5 \times \Z_7$ is $([1]_4,[0]_5,[0]_7)$.
+\end{answer}
+
+\setcounter{exer}{62}
+\begin{exer}[Subgroups of $\Z$ and $\Z_n$]
+    Complete the following:
+    \begin{enumerate}[label=(\alph*)]
+        \setcounter{enumi}{5}
+        \item Find all subgroups of $\mathbb{Z}_{15}$.      
+    \end{enumerate}
+\end{exer}
+\begin{answer}
+    The set of subgroups of $\Z_n$ is $\{\langle [k] \rangle \mid k\in \N \text{ and } k \mid n\}$. Therefore the set of all subgroups of $\Z_{15}$ is $\{\langle [0] \rangle, \langle [1] \rangle, \langle [3] \rangle, \langle [5] \rangle\}$.
+\end{answer}
+
+\setcounter{exer}{95}
+\begin{exer}
+    Show the following groups are not isomorphic.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\Z_4 \not \cong \Z_5$.
+        \item $S_3 \not \cong \Z_6$.
+        \item $\Z_4 \not \cong \Z_2 \times \Z_2$.
+        \item $\R^\times \not \cong \R$.
+        \item $\Z \not \cong \Q$.
+    \end{enumerate}
+\end{exer}
 
 \subsection{Homework Proofs}
 
